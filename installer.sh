@@ -11,6 +11,7 @@
 # Fail fast on errors
 set -e
 
+echo ""
 echo "======================================="
 echo " Raspberry Pi Room Monitor - Installer"
 echo "======================================="
