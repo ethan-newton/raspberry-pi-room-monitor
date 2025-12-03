@@ -1,0 +1,536 @@
+/*
+  Raspberry Pi Room Monitor Dashboard
+  -----------------------------------
+  Year: 2025
+  Author: Ethan Newton
+  Prototype project. Free to use, modify, and distribute.
+  No copyright claims. This project is intended to be open-source and freely licensed for personal use.
+*/
+
+/*
+  ========================
+  Base & Global Styles
+  ========================
+*/
+
+:root {
+  /* Default Light Theme Variables */
+  --font-family: Arial, sans-serif;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --notification-bg: #28a745;       /* see showNotification() in dashboard.js to change the colors */
+  --sidebar-bg: #f1f1f1;
+  --button-color: #28a745;          /* same green as notification bar */
+  --button-color-hover: #53b96a;    /* darker green */
+  --divider-color: #ccc;
+}
+
+body.dark {
+  /* Default Dark Theme Variables */
+  --bg-color: #1e1e1e;
+  --text-color: #f1f1f1;
+  --sidebar-bg: #2b2b2b;
+  --button-color-hover: #208637;    /* lighter green */
+  --divider-color: #555;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+/* Ensure buttons use same font */
+button, .save-button, .apply-button {
+  font-family: var(--font-family);
+}
+
+/* Temperature and Humidity icons */
+.temperature-icon,
+.humidity-icon {
+  display: block;
+  fill: currentColor;           /* Important: SVG icons will inherit text color */
+  color: var(--text-color);     /* Apply theme text color */
+  transition: 0.3s;
+}
+
+.temperature-icon {
+  height: 42px;
+}
+
+.humidity-icon {
+  height: 38px;
+}
+
+/* Reload icon */
+.reload-icon {
+  display: block;
+  fill: currentColor;           /* Important: SVG icons will inherit text color */
+  color: var(--text-color);     /* Apply theme text color */
+  transition: 0.3s;
+}
+
+/* Dashboard Title Heading */
+h1 {
+  color: var(--text-color);
+  font-size: 48px;
+  font-weight: 300;
+  padding-left: 10px;
+  margin-bottom: 0px;
+  transition: 0.3s;
+}
+
+/*
+  ========================
+  Dashboard Layout
+  ========================
+*/
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/*
+  ========================
+  Notification Bar
+  ========================
+*/
+
+.notification-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--notification-bg);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 16px;
+  transform: translateY(-100%);
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+.notification-bar.show {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+  /* border-bottom: 1px solid var(--divider-color); */
+  transform: translateY(0);
+}
+
+/*
+  ========================
+  Sidebar
+  ========================
+*/
+
+.sidebar {
+  width: 200px;
+  background-color: var(--sidebar-bg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid var(--divider-color);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Top & Bottom Sidebar Sections */
+.sidebar-top,
+.sidebar-bottom,
+#sidebar-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar-bottom {
+  margin-top: auto;         /* pushes this section to the bottom */
+}
+
+#sidebar-settings {
+  width: auto;
+}
+
+/* Logo + Title */
+/* Make logo move smoothly when offset changes */
+.logo {
+  width: 70%;                   /* adjust size for logo dimension */
+  margin: 8px auto 12px auto;    /* small gap from top of sidebar, small gap below logo */
+  display: block;
+  fill: currentColor;           /* Important: SVG icon will inherit text color */
+  color: var(--text-color);     /* uses theme color */
+  transform: translateY(var(--logo-offset));
+  transition: 0.4s;             /* same as notification bar */
+}
+
+.logo-title {
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--text-color);     /* uses theme color */
+  line-height: 1.2;
+  text-align: center;
+  transform: translateY(var(--logo-offset));
+  transition: 0.4s;             /* same as notification bar */
+}
+
+/*
+  ========================
+  Form & Setpoints Section
+  ========================
+*/
+
+.form-section {
+  width: 100%;
+  text-align: center;
+}
+
+.form-section h4,
+.form-section h5 {
+  color: var(--text-color);     /* uses theme color */
+  margin: 8px 0;
+  transition: 0.3s;
+}
+
+.form-section h4 {
+  font-size: 21px;
+  font-weight: 300;
+  padding-bottom: 8px;          /* space between text and border */
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.form-section h5 {
+  font-size: 18px;
+  font-weight: 600;
+  padding-top: 8px;
+}
+
+.form-section label {
+  display: block;
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+.form-section input,
+.form-section select,
+.controls input[type="date"] {
+  width: 80px;
+  padding: 5px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid var(--divider-color);
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 4px;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.controls input[type="date"] {
+  width: 150px;
+  cursor: pointer;
+}
+
+.controls input[type="date"]:focus,
+.controls input[type="date"]:active,
+.controls input[type="date"]:hover {
+  opacity: 1;
+}
+
+/* Numbers Input for Min/Max */
+.form-section .input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;                     /* space between label and input */
+  margin: 4px 0;
+  justify-content: flex-end;    /* pushes inputs to the right */
+}
+
+.form-section .input-row label {
+  flex: 0 0 auto;               /* label width based on text */
+}
+
+.form-section .input-row input {
+  width: 80px;
+  text-align: center;
+}
+
+.form-section .input-row.theme-row {
+  justify-content: center;      /* center the label and select horizontally */
+  padding-bottom: 12px;
+}
+
+.form-section select {
+  width: 120px;
+  cursor: pointer;              /* same feel as clickable input */
+  transition: 0.3s
+}
+
+/* Highlight on hover, focus or changed value */
+.form-section input:focus,
+.form-section input:hover,
+.form-section input.changed,
+.form-section select:focus,
+.form-section select:hover {
+  opacity: 1;
+}
+
+#theme-select option[disabled] {
+  font-size: 0.4em;             /* smaller text for smaller height */
+}
+
+/*
+  ========================
+  Buttons
+  ========================
+*/
+
+.save-button,
+.apply-button {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--button-color);
+  border: 1px solid var(--divider-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s, filter 0.3s, transform 0.1s;
+}
+
+.save-button:hover,
+.apply-button:hover {
+  background-color: var(--button-color-hover);
+}
+
+.save-button:active,
+.apply-button:active {
+  background-color: var(--button-color);
+  transform: scale(0.95);           /* gives a "pressed" feel */
+}
+
+.save-button:disabled,
+.apply-button:disabled {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  filter: grayscale(70%);
+  opacity: 0.7;
+  cursor: not-allowed;      /* show it's inactive */
+  transform: none;          /* no press animation */
+}
+
+/* Reload Button */
+.reload-button {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--divider-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.reload-button:hover {
+  background: var(--divider-color);
+}
+
+.reload-button:active {
+  background: var(--sidebar-bg);
+  transform: scale(0.90);           /* gives a "pressed" feel */
+}
+
+.reload-button:disabled {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  filter: grayscale(70%);
+  opacity: 0.7;
+  cursor: not-allowed;      /* show it's inactive */
+  transform: none;          /* no press animation */
+}
+
+.icon.reload-icon {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+}
+
+/* continuous clockwise spin */
+@keyframes spin-continuous {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/*
+  ========================
+  Dividers
+  ========================
+*/
+
+.divider-horizontal,
+.divider-vertical {
+  background-color: var(--divider-color);
+}
+
+.divider-horizontal {
+  width: 100%;
+  height: 1px;
+  margin: 12px 0;
+  border: 0;                /* remove any accidental border */
+  outline: 0;               /* remove outlines */
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 36px;
+  margin: 8px;
+}
+
+/*
+  ========================
+  Theme Toggle
+  ========================
+*/
+
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  padding-bottom: 10px;
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--divider-color);
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--bg-color);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/*
+  ========================
+  Main Content
+  ========================
+*/
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+  overflow-y: hidden;
+  margin-top: 40px;             /* space for notification bar */
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.current-data {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-right: 20px;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-color);
+}
+
+/*
+  ========================
+  Controls & Charts
+  ========================
+*/
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.controls label {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  padding: 10px;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.chart-container canvas {
+  background-color: var(--sidebar-bg);
+  border-radius: 8px;
+  border: 1px solid var(--divider-color);
+  padding: 0 8px 8px 8px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
