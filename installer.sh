@@ -234,11 +234,9 @@ else
             [ -z "$EMAIL_USER" ] && break
         done
     fi
-    echo ""
 
     # Email: email_pass (anything accepted)
     read -p "Email password (App Password recommended, blank = disabled): " EMAIL_PASS
-    echo ""
 
     # Email: email_to
     read -p "Destination email (alerts will be sent here): " EMAIL_TO
@@ -249,7 +247,6 @@ else
             [ -z "$EMAIL_TO" ] && break
         done
     fi
-    echo ""
 
 
     # -------- Apply changes to settings.json using jq --------
