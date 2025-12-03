@@ -1,10 +1,10 @@
-:'
-  Raspberry Pi Room Monitor Installer
-  -----------------------------------
-  Year: 2025
-  Author: Ethan Newton
-  Repository: https://github.com/ethan-newton/raspberry-pi-room-monitor
-'
+#
+# Raspberry Pi Room Monitor Installer
+# -----------------------------------
+# Year: 2025
+# Author: Ethan Newton
+# Repository: https://github.com/ethan-newton/raspberry-pi-room-monitor
+#
 
 #!/bin/bash
 
