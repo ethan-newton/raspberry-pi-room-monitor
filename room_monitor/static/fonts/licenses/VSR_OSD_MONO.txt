@@ -1,0 +1,8 @@
+VCR OSD Mono
+By Riciery Leal
+
+Version: 1.001 - March 31, 2025
+License: 100% Free
+Commercial Use: Yes
+EULA: No license found
+
