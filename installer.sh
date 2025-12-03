@@ -278,6 +278,7 @@ next_step "Creating virtual environment..."
 
 cd "$HOME_DIR/room_monitor"
 python3 -m venv venv
+echo "[INFO] Virtual environment created successfully"
 echo ""
 
 
