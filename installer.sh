@@ -247,6 +247,7 @@ else
             [ -z "$EMAIL_TO" ] && break
         done
     fi
+    echo ""
 
 
     # -------- Apply changes to settings.json using jq --------
@@ -277,6 +278,7 @@ next_step "Creating virtual environment..."
 
 cd "$HOME_DIR/room_monitor"
 python3 -m venv venv
+echo ""
 
 
 # ========================
