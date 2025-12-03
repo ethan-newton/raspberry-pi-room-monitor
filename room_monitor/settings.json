@@ -1,0 +1,12 @@
+{
+  "min_temp": 18.0,
+  "max_temp": 22.0,
+  "min_hum": 40.0,
+  "max_hum": 70.0,
+  "data_pin": 4,
+  "email_user": "<EMAIL_FROM>",
+  "email_pass": "<EMAIL_PASSWORD>",
+  "email_to": "<EMAIL_TO>",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 465
+}
