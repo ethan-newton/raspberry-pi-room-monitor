@@ -155,7 +155,8 @@ echo ""
 
 next_step "Installing essential system tools..."
 
-sudo apt install -y git curl wget jq
+sudo apt install -y git
+sudo apt install -y jq
 echo ""
 
 
