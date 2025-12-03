@@ -1,0 +1,229 @@
+/*
+  Raspberry Pi Room Monitor Dashboard
+  -----------------------------------
+  Year: 2025
+  Author: Ethan Newton
+  Prototype project. Free to use, modify, and distribute.
+  No copyright claims. This project is intended to be open-source and freely licensed for personal use.
+*/
+
+
+/* Linux Mint & Raspberry Pi */
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/static/fonts/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Matrix */
+@font-face {
+  font-family: 'White Rabbit';
+  src: url('/static/fonts/white-rabbit.regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Game Boy */
+@font-face {
+  font-family: 'Determination';
+  src: url('/static/fonts/determination.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Retro */
+@font-face {
+  font-family: 'VCR';
+  src: url('/static/fonts/VCR_OSD_MONO_1.001.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ===== Default ===== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --sidebar-bg: #f1f1f1;
+  --divider-color: #ccc;
+}
+
+body.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #f1f1f1;
+  --sidebar-bg: #2b2b2b;
+  --divider-color: #555;
+}
+
+
+/* ---------------- */
+
+
+/* ===== Linux Mint ===== */
+body.theme-linux-mint {
+  --bg-color: #f6f6f7;
+  --text-color: #202020;
+  --sidebar-bg: #ebebed;
+  --divider-color: #979797;
+  --font-family: 'Open Sans', Arial, sans-serif;
+}
+
+body.theme-linux-mint.dark {
+  --bg-color: #222226;
+  --text-color: #e4e4e4;
+  --sidebar-bg: #2c2c31;
+  --divider-color: #828284;
+  --font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* ===== Windows ===== */
+body.theme-windows {
+  --bg-color: #fafafa;
+  --text-color: #0e0e0e;
+  --sidebar-bg: #f1f4f9;
+  --divider-color: #c9cacf;
+}
+
+body.theme-windows.dark {
+  --bg-color: #191919;
+  --text-color: #fefefe;
+  --sidebar-bg: #202020;
+  --divider-color: #535353;
+}
+
+/* ===== Raspberry Pi ===== */
+body.theme-raspberry-pi {
+  --bg-color: #3f1422;
+  --text-color: #e1fcb3;
+  --sidebar-bg: #562033;
+  --divider-color: #6cc04a;
+  --font-family: 'Open Sans', Arial, sans-serif;
+}
+
+body.theme-raspberry-pi.dark {
+  --bg-color: #0c1d08;
+  --text-color: #ffb7d1;
+  --sidebar-bg: #16300f;
+  --divider-color: #e30b5d;
+  --font-family: 'Open Sans', Arial, sans-serif;
+}
+
+
+/* ---------------- */
+
+
+/* ===== Solarized ===== */
+body.theme-solarized {
+  --bg-color: #002b36;
+  --text-color: #e3e0b4;
+  --sidebar-bg: #074559;
+  --divider-color: #b58900;
+}
+
+body.theme-solarized.dark {
+  --bg-color: #001519;
+  --text-color: #9fb6b4;
+  --sidebar-bg: #00242b;
+  --divider-color: #b58900;
+}
+
+/* ===== Mirage ===== */
+body.theme-mirage {
+  --bg-color: #3a4b48;
+  --text-color: #f0eada;
+  --sidebar-bg: #4a5f5b;
+  --divider-color: #c8b27b;
+}
+
+body.theme-mirage.dark {
+  --bg-color: #101615;
+  --text-color: #dcd6c0;
+  --sidebar-bg: #1c2624;
+  --divider-color: #9c8854;
+}
+
+/* ===== Horizon ===== */
+body.theme-horizon {
+  --bg-color: #294047;
+  --text-color: #ffd9c2;
+  --sidebar-bg: #35545c;
+  --divider-color: #ff7a4c;
+}
+
+body.theme-horizon.dark {
+  --bg-color: #24110b;
+  --text-color: #dbe7db;
+  --sidebar-bg: #371a10;
+  --divider-color: #2ea7a8;
+}
+
+/* ===== Sunset ===== */
+body.theme-sunset {
+  --bg-color: #511a16;
+  --text-color: #ffe5a8;
+  --sidebar-bg: #873128;
+  --divider-color: #fb4ea9;
+}
+
+body.theme-sunset.dark {
+  --bg-color: #2b0016;
+  --text-color: #ffb8d0;
+  --sidebar-bg: #400022;
+  --divider-color: #ff6f3c;
+}
+
+
+/* ---------------- */
+
+
+/* ===== Game Boy ===== */
+body.theme-gameboy {
+  --bg-color: #bce464;
+  --text-color: #132d08;
+  --sidebar-bg: #a2c946;
+  --divider-color: #3c6818;
+  --font-family: 'Determination', Arial, sans-serif;
+}
+
+body.theme-gameboy.dark {
+  --bg-color: #132d08;
+  --text-color: #bce464;
+  --sidebar-bg: #3c6818;
+  --divider-color: #a2c946;
+  --font-family: 'Determination', Arial, sans-serif;
+}
+
+/* ===== Matrix ===== */
+body.theme-matrix {
+  --bg-color: #0d1f0d;
+  --text-color: #00ff41;
+  --sidebar-bg: #112911;
+  --divider-color: #00ca2b;
+  --font-family: 'White Rabbit', Courier New, monospace;
+}
+
+body.theme-matrix.dark {
+  --bg-color: #000000;
+  --text-color: #00ff00;
+  --sidebar-bg: #001100;
+  --divider-color: #22943b;
+  --font-family: 'White Rabbit', Courier New, monospace;
+}
+
+/* ===== Retro ===== */
+body.theme-retro {
+  --bg-color: #040f0f;
+  --text-color: #f44beb;
+  --sidebar-bg: #0b2526;
+  --divider-color: #00e5ff;
+  --font-family: 'VCR', Arial, sans-serif;
+}
+
+body.theme-retro.dark {
+  --bg-color: #0a0014;
+  --text-color: #00f6ff;
+  --sidebar-bg: #190031;
+  --divider-color: #ff0099;
+  --font-family: 'VCR', Arial, sans-serif;
+}
