@@ -18,7 +18,7 @@ echo ""
 
 # Automatic step counter
 STEP=1
-TOTAL_STEPS=9
+TOTAL_STEPS=10
 
 next_step() {
     echo "[$STEP/$TOTAL_STEPS] $1"
@@ -146,6 +146,16 @@ next_step "Updating system..."
 sudo apt update
 sudo apt upgrade -y
 echo ""
+
+
+# ========================
+# Install Git
+# ========================
+
+next_step "Installing Git..."
+sudo apt install -y git
+echo ""
+
 
 # ========================
 # Download Project
