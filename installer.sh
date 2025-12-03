@@ -19,7 +19,7 @@ echo ""
 
 # Automatic step counter
 STEP=1
-TOTAL_STEPS=10
+TOTAL_STEPS=11
 
 next_step() {
     echo "[$STEP/$TOTAL_STEPS] $1"
@@ -147,6 +147,32 @@ next_step "Updating system..."
 
 sudo apt update
 sudo apt upgrade -y
+echo ""
+
+
+# ========================
+# Automatic Timezone
+# Detection
+# ========================
+
+show_step "Detecting and configuring timezone automatically..."
+
+# Try to detect timezone from external IP
+AUTO_TZ=$(curl -s https://ipapi.co/timezone)
+
+# Validate detection: must not be empty and must contain a "/"
+if [[ -n "$AUTO_TZ" && "$AUTO_TZ" == */* ]]; then
+    echo "[INFO] Detected timezone: $AUTO_TZ"
+else
+    echo "[WARNING] Could not detect timezone automatically. Falling back to UTC."
+    AUTO_TZ="UTC"
+fi
+
+# Apply timezone
+sudo timedatectl set-timezone "$AUTO_TZ"
+sudo timedatectl set-ntp true
+
+echo "[INFO] Timezone applied: $(timedatectl | grep 'Time zone')"
 echo ""
 
 
