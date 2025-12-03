@@ -390,7 +390,7 @@ sudo systemctl enable room_monitor.service
 sudo systemctl start room_dashboard.service
 sudo systemctl start room_monitor.service
 
-echo "[INFO] systemd services are how enabled and running"
+echo "[INFO] systemd services are now enabled and running"
 echo ""
 
 # -------- Completion and Reboot --------
