@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #
 # Raspberry Pi Room Monitor Dashboard
 # -----------------------------------
@@ -6,8 +8,6 @@
 # Prototype project. Free to use, modify, and distribute.
 # No copyright claims. This project is intended to be open-source and freely licensed for personal use.
 #
-
-#!/bin/bash
 
 USERNAME=$(whoami)
 
