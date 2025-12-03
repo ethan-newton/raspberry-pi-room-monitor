@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #
 # Raspberry Pi Room Monitor Installer
 # -----------------------------------
@@ -5,8 +7,6 @@
 # Author: Ethan Newton
 # Repository: https://github.com/ethan-newton/raspberry-pi-room-monitor
 #
-
-#!/bin/bash
 
 # Fail fast on errors
 set -e
