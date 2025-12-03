@@ -143,17 +143,19 @@ echo ""
 # ========================
 
 next_step "Updating system..."
+
 sudo apt update
 sudo apt upgrade -y
 echo ""
 
 
 # ========================
-# Install Git
+# Install Essential Tools
 # ========================
 
-next_step "Installing Git..."
-sudo apt install -y git
+next_step "Installing essential system tools..."
+
+sudo apt install -y git curl wget jq
 echo ""
 
 
