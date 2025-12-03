@@ -155,7 +155,7 @@ echo ""
 # Detection
 # ========================
 
-show_step "Detecting and configuring timezone automatically..."
+next_step "Detecting and configuring timezone automatically..."
 
 # Try to detect timezone from external IP
 AUTO_TZ=$(curl -s https://ipapi.co/timezone)
