@@ -26,6 +26,40 @@ next_step() {
     STEP=$((STEP + 1))
 }
 
+
+# ========================
+# Confirm the Process
+# With the User
+# ========================
+
+# -------- Confirm with the user that they want to procees --------
+echo "This script will install the Raspberry Pi Room Monitor on your system."
+echo "Every previously recorded data files will be erased."
+
+while true; do
+    read -r -p "Do you want to continue? [Y/n] " CONFIRM
+
+    # Default = Yes when pressing Enter
+    if [[ -z "$CONFIRM" ]]; then
+        CONFIRM="y"
+    fi
+
+    case "$CONFIRM" in
+        [Yy]* )
+            echo "Continuing installation..."
+            break
+            ;;
+        [Nn]* )
+            echo "Installation aborted by user."
+            exit 0
+            ;;
+        * )
+            echo "Invalid input. Please enter Y or N."
+            ;;
+    esac
+done
+
+
 # ========================
 # Verifying
 # Raspberry Pi Model
