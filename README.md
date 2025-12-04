@@ -7,9 +7,11 @@ To install, log into the Raspberry Pi via SSH and run the following commands:
 `
 wget https://raw.githubusercontent.com/ethan-newton/raspberry-pi-room-monitor/refs/heads/main/installer.sh
 `
+
 `
 chmod +x installer.sh
 `
+
 `
 ./installer.sh
 `
