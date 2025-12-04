@@ -47,6 +47,7 @@ while true; do
     case "$CONFIRM" in
         [Yy]* )
             echo "Continuing installation..."
+            echo ""
             break
             ;;
         [Nn]* )
