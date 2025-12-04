@@ -75,6 +75,7 @@ if [ -f /proc/device-tree/model ]; then
     PI_MODEL=$(tr -d '\0' </proc/device-tree/model)
 else
     echo "[ERROR] Unable to detect Raspberry Pi model."
+    echo "Installation aborted."
     exit 1
 fi
 
