@@ -4,8 +4,8 @@
   "min_hum": 40.0,
   "max_hum": 70.0,
   "data_pin": 4,
-  "email_user": "<EMAIL_FROM>",
-  "email_pass": "<EMAIL_PASSWORD>",
+  "email_user": "raspberry.pi.room.monitor@gmail.com",
+  "email_pass": "avqffzpnbzafflxb",
   "email_to": "<EMAIL_TO>",
   "smtp_host": "smtp.gmail.com",
   "smtp_port": 465
