@@ -280,26 +280,11 @@ else
     echo ""
 
 
-    # -------- Ask for email information --------
-    echo "Email configuration (optional)"
-    echo "Leave fields empty to disable email alerts."
-    echo ""
+    # -------- Ask for email address --------
+    echo "(Optional) Email configuration, leave field empty to disable email alerts."
 
     # Regex for basic email validation
     EMAIL_REGEX="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
-
-    # Email: email_user
-    read -p "Alert email from (ex: myemail@gmail.com): " EMAIL_USER
-    if [ -n "$EMAIL_USER" ]; then
-        while ! [[ "$EMAIL_USER" =~ $EMAIL_REGEX ]]; do
-            echo "[WARNING] Invalid email format. Please enter a valid email or leave blank."
-            read -p "Email username: " EMAIL_USER
-            [ -z "$EMAIL_USER" ] && break
-        done
-    fi
-
-    # Email: email_pass (anything accepted)
-    read -p "Email password (App Password recommended, blank = disabled): " EMAIL_PASS
 
     # Email: email_to
     read -p "Destination email (alerts will be sent here): " EMAIL_TO
@@ -317,14 +302,12 @@ else
     echo "Updating settings.json..."
 
     jq ".data_pin = $DATA_PIN |
-        .email_user = \"$EMAIL_USER\" |
-        .email_pass = \"$EMAIL_PASS\" |
         .email_to = \"$EMAIL_TO\"" \
         "$SETTINGS_FILE" > "$SETTINGS_FILE.tmp"
 
     mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
 
-    # Fix permissions (no sudo needed; installer runs as root)
+    # Fix permissions
     chmod 666 "$SETTINGS_FILE"
 
     echo "[INFO] settings.json updated successfully"
