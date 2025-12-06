@@ -21,7 +21,7 @@ To get started, you will need the following:
 
 ### Prerequisites
 - Raspberry Pi
-- MicroSD Card (8 GB or larger)
+- MicroSD card (8 GB or larger)
 - DHT22 sensor module
 - Computer with SD card reader (to flash Raspberry Pi OS)
 - Wi-Fi or Ethernet internet connection
