@@ -1,27 +1,31 @@
 # Raspberry Pi Room Monitor
-Temperature and humidity monitor for Raspberry Pi using a DHT22 sensor.
-Includes a web dashboard, automatic data logging, and optional email alerts.
+A lightweight temperature and humidity monitoring system for Raspberry Pi using a DHT22 sensor.\
+Includes a real-time web dashboard, automatic data logging, and email alerts.
 
 ## Features
-- **Real-time** temperature and humidity monitoring
-- **Web dashboard** accessible from any device on your home network
+- **Real-time** monitoring of temperature and humidity
+- **Web dashboard** accessible from any device on your network
 - **Data logging** with hourly temperature and humidity history
 - **Email alerts** when thresholds are exceeded
 - **Automatic startup** on boot (runs in the background)
-- **Easy installation** with one-command setup
+- **Easy installation** with a single-command setup
 
 ## Getting Started
 To get started, you will need the following:
 
 ### Prerequisites
 - Raspberry Pi
-- MicroSD Card (minimum 8 GB)
-- DHT22 module
-- Computer with an SD card reader (to flash Raspberry Pi OS)
-- Wi-Fi internet connection
+- MicroSD Card (8 GB or larger)
+- DHT22 sensor module
+- Computer with SD card reader (to flash Raspberry Pi OS)
+- Wi-Fi or Ethernet internet connection
+- USB power supply cable (micro USB or USB-C, depending on the board model)\
+**Minimum** recommended: 5.1V / 2.5A
 
 ### Optional
 - Raspberry Pi case
+- Mounting hardware
+- USB keyboard + HDMI cable (for non-SSH setup)
 
 ## Compatibility
 The compatibility depends on board model, operating system, and Python version.
@@ -50,7 +54,7 @@ The compatibility depends on board model, operating system, and Python version.
 - 7 (Wheezy)
 - 8 (Jessie)
 - 9 (Stretch)
-- 13 (Trixie) - Python 3.12 breaks DHT22 libraries
+- 13 (Trixie)
 
 ### Python Version
 The Python version is determined by the OS release.
@@ -63,13 +67,12 @@ The Python version is determined by the OS release.
 - 3.0.x → 3.6.x
 - 3.12.x and above
 
-## Connecting the DHT22 to the Raspberry Pi GPIO
-The GPIO pins (General Purpose Input/Output) are used to connect the DHT22 sensor.
+## Hardware Setup
+The Raspberry Pi GPIO pins (General Purpose Input/Output) are used to connect the DHT22 sensor.
 ![GPIO pinout diagram](https://www.raspberrypi.com/documentation/computers/images/GPIO-Pinout-Diagram-2.png)
-Raspberrypi.com: Documentation / Computers / Raspberry Pi computer hardware / GPIO and the 40-pin header[^1]
+Source: Raspberry Pi Documentation[^1]
 
 ### Connect the DHT22 module as follows:
-
 - &nbsp;&nbsp;\+&nbsp;&nbsp; → Pin 1 (3V3 Power)
 - out → Pin 7 (GPIO 4)
 - &nbsp;&nbsp;–&nbsp;&nbsp; → Pin 9 (Ground) 
@@ -79,9 +82,10 @@ Log into your Raspberry Pi via SSH and run the following command:
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/ethan-newton/raspberry-pi-room-monitor/main/installer.sh)
 ```
+This automatically installs all dependencies, downloads the files, configures the system, and prepares the dashboard.
 
 ## All Done!
-After installation, the script will show your Raspberry Pi’s local IP address and the URL to access the dashboard:\
+After the installation, the script displays your Raspberry Pi’s local IP address and the URL to access the dashboard:\
 <br />
 `
 http://<IP_ADDRESS>:5000
@@ -89,4 +93,5 @@ http://<IP_ADDRESS>:5000
 <br />
 Press **Enter** when prompted to reboot.
 
-[^1]: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio
+[^1]: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio  
+Raspberrypi.com: Documentation / Computers / Raspberry Pi computer hardware / GPIO and the 40-pin header
