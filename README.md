@@ -71,17 +71,17 @@ Log into your Raspberry Pi via SSH and run the following commands:
 
 ### 1. Download the installer script:
 ```bash
-wget https://raw.githubusercontent.com/ethan-newton/raspberry-pi-room-monitor/refs/heads/main/installer.sh
+wget https://raw.githubusercontent.com/ethan-newton/raspberry-pi-room-monitor/refs/heads/main/raspberry-pi-room-monitor_installer.sh
 ```
 
 ### 2. Make the script executable:
 ```bash
-chmod +x installer.sh
+chmod +x raspberry-pi-room-monitor_installer.sh
 ```
 
 ### 3. Run the installer:
 ```bash
-./installer.sh
+./raspberry-pi-room-monitor_installer.sh
 ```
 
 ## All Done!
