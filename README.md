@@ -10,6 +10,12 @@ Includes a real-time web dashboard, automatic data logging, and email alerts.
 - **Automatic startup** on boot (runs in the background)
 - **Easy installation** with a single-command setup
 
+### Light Theme
+<img width="1366" height="768" alt="Screenshot of the dashboard in light theme" src="https://github.com/user-attachments/assets/7d6803ea-945b-470f-9ce3-94f77cfde362" />
+
+### Dark Theme
+<img width="1366" height="768" alt="Screenshot of the dashboard in dark theme" src="https://github.com/user-attachments/assets/f665ede1-79c2-4ebf-a870-5db53ede2ecd" />
+
 ## Getting Started
 To get started, you will need the following:
 
