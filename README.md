@@ -99,5 +99,5 @@ http://<IP_ADDRESS>:5000
 <br />
 Press **Enter** when prompted to reboot.
 
-[^1]: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio  
-Raspberrypi.com: Documentation / Computers / Raspberry Pi computer hardware / GPIO and the 40-pin header
+[^1]: Raspberrypi.com: Documentation / Computers / Raspberry Pi computer hardware / GPIO and the 40-pin header\
+https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio  
