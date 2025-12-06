@@ -21,7 +21,7 @@
   --notification-bg: #28a745;       /* see showNotification() in dashboard.js to change the colors */
   --sidebar-bg: #f1f1f1;
   --button-color: #28a745;          /* same green as notification bar */
-  --button-color-hover: #53b96a;    /* darker green */
+  --button-color-hover: #53b96a;    /* lighter green */
   --divider-color: #ccc;
 }
 
@@ -30,7 +30,7 @@ body.dark {
   --bg-color: #1e1e1e;
   --text-color: #f1f1f1;
   --sidebar-bg: #2b2b2b;
-  --button-color-hover: #208637;    /* lighter green */
+  --button-color-hover: #208637;    /* darker green */
   --divider-color: #555;
 }
 
