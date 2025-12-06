@@ -187,6 +187,18 @@ echo ""
 
 
 # ========================
+# Install Essential Tools
+# ========================
+
+next_step "Installing essential system tools..."
+
+sudo apt install -y git
+sudo apt install -y jq
+sudo apt install -y neofetch
+echo ""
+
+
+# ========================
 # Automatic Timezone
 # Detection
 # ========================
@@ -209,18 +221,6 @@ sudo timedatectl set-timezone "$AUTO_TZ"
 sudo timedatectl set-ntp true
 
 echo "[INFO] Timezone applied: $(timedatectl | grep 'Time zone')"
-echo ""
-
-
-# ========================
-# Install Essential Tools
-# ========================
-
-next_step "Installing essential system tools..."
-
-sudo apt install -y git
-sudo apt install -y jq
-sudo apt install -y neofetch
 echo ""
 
 
