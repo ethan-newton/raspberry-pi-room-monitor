@@ -2,6 +2,14 @@
 Temperature and humidity monitor for Raspberry Pi using a DHT22 sensor.
 Includes a web dashboard, automatic data logging, and optional email alerts.
 
+## Features
+- **Real-time** temperature and humidity monitoring
+- **Web dashboard** accessible from any device on your home network
+- **Data logging** with hourly temperature and humidity history
+- **Email alerts** when thresholds are exceeded
+- **Automatic startup** on boot (runs in the background)
+- **Easy installation** with one-command setup
+
 ## Getting Started
 To get started, you will need the following:
 
@@ -67,21 +75,9 @@ Raspberrypi.com: Documentation / Computers / Raspberry Pi computer hardware / GP
 - &nbsp;&nbsp;–&nbsp;&nbsp; → Pin 9 (Ground) 
 
 ## Installation
-Log into your Raspberry Pi via SSH and run the following commands:
-
-### 1. Download the installer script:
+Log into your Raspberry Pi via SSH and run the following command:
 ```bash
-wget https://raw.githubusercontent.com/ethan-newton/raspberry-pi-room-monitor/refs/heads/main/raspberry-pi-room-monitor_installer.sh
-```
-
-### 2. Make the script executable:
-```bash
-chmod +x raspberry-pi-room-monitor_installer.sh
-```
-
-### 3. Run the installer:
-```bash
-./raspberry-pi-room-monitor_installer.sh
+bash <(curl -s https://raw.githubusercontent.com/ethan-newton/raspberry-pi-room-monitor/main/installer.sh)
 ```
 
 ## All Done!
