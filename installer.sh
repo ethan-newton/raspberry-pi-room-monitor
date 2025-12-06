@@ -193,8 +193,8 @@ echo ""
 
 next_step "Detecting and configuring timezone automatically..."
 
-# Try to detect timezone from external IP
-AUTO_TZ=$(curl -s https://ipapi.co/timezone)
+# Fetch timezone from worldtimeapi.org
+AUTO_TZ=$(curl -s https://worldtimeapi.org/api/ip | jq -r '.timezone')
 
 # Validate detection: must not be empty and must contain a "/"
 if [[ -n "$AUTO_TZ" && "$AUTO_TZ" == */* ]]; then
