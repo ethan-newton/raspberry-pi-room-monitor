@@ -19,13 +19,13 @@ To get started, you will need the following:
 The compatibility depends on board model, operating system, and Python version.
 
 ### Board Model
-#### ✔ Compatible
+#### ✔️ Compatible
 - Raspberry Pi 3
 - Raspberry Pi 4
 - Raspberry Pi 5
 - Raspberry Pi Zero 2 W
 
-#### ✖ Not Compatible
+#### ❌ Not Compatible
 - Raspberry Pi 1
 - Raspberry Pi 2
 - Raspberry Pi Zero
@@ -33,12 +33,12 @@ The compatibility depends on board model, operating system, and Python version.
 ### Operating System
 **Recommended**: Raspberry Pi OS Lite (minimal), 32-bit or 64-bit.
 
-#### ✔ Compatible
+#### ✔️ Compatible
 - 10 (Buster)
 - 11 (Bullseye)
 - 12 (Bookworm)
 
-#### ✖ Not Compatible
+#### ❌ Not Compatible
 - 7 (Wheezy)
 - 8 (Jessie)
 - 9 (Stretch)
@@ -47,10 +47,10 @@ The compatibility depends on board model, operating system, and Python version.
 ### Python Version
 The Python version is determined by the OS release.
 
-#### ✔ Compatible
+#### ✔️ Compatible
 - 3.7.x → 3.11.x
 
-#### ✖ Not Compatible
+#### ❌ Not Compatible
 - 2.x
 - 3.0.x → 3.6.x
 - 3.12.x and above
