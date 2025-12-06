@@ -266,7 +266,7 @@ if [ ! -f "$SETTINGS_FILE" ]; then
 else
     # -------- Ask for the GPIO pin number --------
     echo "Enter the GPIO pin number used for the DHT22 data line."
-    echo "IMPORTANT: This must be the BCM GPIO number (e.g., 4 = GPIO4 on the board)."
+    echo "IMPORTANT: This must be the BCM GPIO number (e.g., 4 = GPIO 4 on the board)."
     echo "Default is 4."
     read -p "GPIO pin: " DATA_PIN
     DATA_PIN=${DATA_PIN:-4}     # default to 4 if blank
