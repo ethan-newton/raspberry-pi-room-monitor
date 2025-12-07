@@ -1,6 +1,6 @@
 /*
-  Raspberry Pi Room Monitor Dashboard
-  -----------------------------------
+  Raspberry Pi Room Monitor
+  -------------------------
   Year: 2025
   Author: Ethan Newton
   Prototype project. Free to use, modify, and distribute.
