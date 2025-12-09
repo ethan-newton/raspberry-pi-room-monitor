@@ -161,7 +161,7 @@ h1 {
 /* Make logo move smoothly when offset changes */
 .logo {
   width: 70%;                   /* adjust size for logo dimension */
-  margin: 8px auto 12px auto;    /* small gap from top of sidebar, small gap below logo */
+  margin: 8px auto 12px auto;   /* small gap from top of sidebar, small gap below logo */
   display: block;
   fill: currentColor;           /* Important: SVG icon will inherit text color */
   color: var(--text-color);     /* uses theme color */
