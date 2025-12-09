@@ -183,6 +183,8 @@ next_step "Updating system..."
 
 sudo apt update
 sudo apt upgrade -y
+
+echo "[INFO] System successfully updated"
 echo ""
 
 
@@ -195,6 +197,8 @@ next_step "Installing essential system tools..."
 sudo apt install -y git
 sudo apt install -y jq
 sudo apt install -y neofetch
+
+echo "[INFO] System tools successfully installed"
 echo ""
 
 
