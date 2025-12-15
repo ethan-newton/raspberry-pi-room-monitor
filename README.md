@@ -75,7 +75,7 @@ The Python version is determined by the OS release.
 
 ## Hardware Setup
 The Raspberry Pi GPIO pins (General Purpose Input/Output) are used to connect the DHT22 sensor.
-![GPIO pinout diagram](https://www.raspberrypi.com/documentation/computers/images/GPIO-Pinout-Diagram-2.png)
+![GPIO pinout diagram](https://github.com/user-attachments/assets/fd277533-6e8b-44d9-afde-0739be1a8283)
 Source: Raspberry Pi Documentation[^1]
 
 ### Connect the DHT22 module as follows:
